@@ -9,12 +9,12 @@ if [ -d "$TARGET_DIR" ]; then
     rm -rf "$TARGET_DIR"
 fi
 
-chown -R root:root /filebrowser
-chmod -R 755 /filebrowser
-
 mkdir -p "$TARGET_DIR"
 
 mkdir -p "$TARGET_DIR"/files
+
+chown -R root:root /filebrowser
+chmod -R 755 /filebrowser
 
 LATEST_RELEASE=$(curl -sL https://api.github.com/repos/filebrowser/filebrowser/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
 
