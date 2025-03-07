@@ -6,10 +6,10 @@ FileBrowser是一个开源的文件管理系统，主要用于提供一个简单
 
 ### 安装
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/filebrowser/main/bash/install_filebrowser.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/FileBrowser/main/bash/install_filebrowser.sh)
 ```
 
 ### 卸载
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/filebrowser/main/bash/uninstall_filebrowser.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/FileBrowser/main/bash/uninstall_filebrowser.sh)
 ```
