@@ -48,7 +48,7 @@ chmod +x "$TARGET_DIR"/filebrowser
 
 "$TARGET_DIR"/filebrowser -d /etc/filebrowser.db config set --baseurl /files
 
-"$TARGET_DIR"/filebrowser -d /etc/filebrowser.db config set --root /files
+"$TARGET_DIR"/filebrowser -d /etc/filebrowser.db config set --root /filebrowsersharefiles
 
 "$TARGET_DIR"/filebrowser -d /etc/filebrowser.db users add sysadmin sysadmin --perm.admin
 
