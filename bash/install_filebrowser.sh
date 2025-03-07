@@ -11,8 +11,6 @@ fi
 
 mkdir -p "$TARGET_DIR"
 
-mkdir -p "$TARGET_DIR"/files
-
 LATEST_RELEASE=$(curl -sL https://api.github.com/repos/filebrowser/filebrowser/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
 
 FILE_NAME="linux-amd64-filebrowser.tar.gz"
