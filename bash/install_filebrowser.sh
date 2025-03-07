@@ -11,7 +11,7 @@ fi
 
 mkdir -p "$TARGET_DIR"
 
-mkdir  "$TARGET_DIR"/files
+mkdir "$TARGET_DIR"/files
 
 LATEST_RELEASE=$(curl -sL https://api.github.com/repos/filebrowser/filebrowser/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
 
