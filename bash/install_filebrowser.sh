@@ -48,7 +48,7 @@ chmod +x "$TARGET_DIR"/filebrowser
 
 "$TARGET_DIR"/filebrowser -d /etc/filebrowser.db config set --baseurl /files
 
-"$TARGET_DIR"/filebrowser -d /etc/filebrowser.db users add admin admin --perm.admin
+"$TARGET_DIR"/filebrowser -d /etc/filebrowser.db users add sysadmin sysadmin --perm.admin
 
 nohup "$TARGET_DIR"/filebrowser -d /etc/filebrowser.db >/dev/null 2>&1 &
 
