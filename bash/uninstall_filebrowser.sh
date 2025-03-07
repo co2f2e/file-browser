@@ -1,5 +1,5 @@
 #!/bin/bash
-
+clear
 TARGET_DIR="/filebrowser"
 CONFIG_DB="/etc/filebrowser.db"
 LOG_FILE="/var/log/filebrowser.log"
