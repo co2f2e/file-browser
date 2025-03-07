@@ -48,10 +48,10 @@ chmod +x "$TARGET_DIR"/filebrowser
 
 "$TARGET_DIR"/filebrowser -d /etc/filebrowser.db config set --baseurl /files
 
-sudo "$TARGET_DIR"/filebrowser -d /etc/filebrowser.db config set --scope "$TARGET_DIR"/files
+"$TARGET_DIR"/filebrowser -d /etc/filebrowser.db config set --root "$TARGET_DIR"/files
 
 "$TARGET_DIR"/filebrowser -d /etc/filebrowser.db users add sysadmin sysadmin --perm.admin
 
-sudo nohup "$TARGET_DIR"/filebrowser -d /etc/filebrowser.db >/dev/null 2>&1 &
+nohup "$TARGET_DIR"/filebrowser -d /etc/filebrowser.db >/dev/null 2>&1 &
 
 sed -i '/exit 0/i\nohup filebrowser -d \/etc\/filebrowser.db >\/dev\/null 2>&1 &' /etc/rc.local
