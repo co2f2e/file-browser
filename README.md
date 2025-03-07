@@ -13,3 +13,24 @@ bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/FileBrowser/main/bash/i
 ```bash
 bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/FileBrowser/main/bash/uninstall_filebrowser.sh)
 ```
+
+### 环境
+Debian12
+已安装Nginx，申请了域名证书
+
+### 访问
+https://域名/files
+
+### Nginx配置
+```bash
+location ^~ /files/ {
+        proxy_pass  http://127.0.0.1:8088/;
+        proxy_set_header Host $proxy_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+```
+
+### 登录
+初始账号：admin
+初始密码：admin
