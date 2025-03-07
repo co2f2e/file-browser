@@ -13,7 +13,7 @@ echo "正在删除 FileBrowser 相关文件..."
 rm -rf "$TARGET_DIR"
 rm -f "$CONFIG_DB"
 rm -f "$LOG_FILE"
-rm -f "$SHARE_FILES"
+rm -rf "$SHARE_FILES"
 
 if [ -f "$RC_LOCAL" ]; then
     sed -i '/filebrowser/d' "$RC_LOCAL"
