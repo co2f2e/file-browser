@@ -13,9 +13,6 @@ mkdir -p "$TARGET_DIR"
 
 mkdir -p "$TARGET_DIR"/files
 
-chown -R root:root /filebrowser
-chmod -R 755 /filebrowser
-
 LATEST_RELEASE=$(curl -sL https://api.github.com/repos/filebrowser/filebrowser/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
 
 FILE_NAME="linux-amd64-filebrowser.tar.gz"
@@ -57,6 +54,6 @@ chmod +x "$TARGET_DIR"/filebrowser
 
 "$TARGET_DIR"/filebrowser -d /etc/filebrowser.db users add sysadmin sysadmin --perm.admin
 
-nohup "$TARGET_DIR"/filebrowser -d /etc/filebrowser.db >/dev/null 2>&1 &
+sudo nohup "$TARGET_DIR"/filebrowser -d /etc/filebrowser.db >/dev/null 2>&1 &
 
 sed -i '/exit 0/i\nohup filebrowser -d \/etc\/filebrowser.db >\/dev\/null 2>&1 &' /etc/rc.local
