@@ -9,6 +9,9 @@ if [ -d "$TARGET_DIR" ]; then
     rm -rf "$TARGET_DIR"
 fi
 
+chown -R root:root /filebrowser
+chmod -R 755 /filebrowser
+
 mkdir -p "$TARGET_DIR"
 
 mkdir "$TARGET_DIR"/files
