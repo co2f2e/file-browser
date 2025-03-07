@@ -32,5 +32,5 @@ location ^~ /files/ {
 ```
 
 ### 登录
-初始账号：admin
-初始密码：admin
+初始账号：sysadmin
+初始密码：sysadmin
