@@ -51,21 +51,14 @@ echo "FileBrowser ($LATEST_RELEASE) 已下载并解压到 /$TARGET_DIR，接下�
 
 chmod +x "$TARGET_DIR"/filebrowser
 
-"$TARGET_DIR"/filebrowser -d $CONFIG_DB config init
-
-"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --address 127.0.0.1
-
-"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --port 8088
-
-"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --locale zh-cn
-
-"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --log $LOG_FILE
-
-"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --baseurl /files
-
-"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --root $SHARE_FILES
-
-"$TARGET_DIR"/filebrowser -d $CONFIG_DB users add $USERNAME admin --perm.admin
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB config init >/dev/null 2>&1
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --address 127.0.0.1 >/dev/null 2>&1
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --port 8088 >/dev/null 2>&1
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --locale zh-cn >/dev/null 2>&1
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --log $LOG_FILE >/dev/null 2>&1
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --baseurl /files >/dev/null 2>&1
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --root $SHARE_FILES >/dev/null 2>&1
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB users add $USERNAME admin --perm.admin >/dev/null 2>&1
 
 nohup "$TARGET_DIR"/filebrowser -d $CONFIG_DB >/dev/null 2>&1 &
 
