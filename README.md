@@ -19,9 +19,6 @@ bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/FileBrowser/main/bash/u
 Debian12
 已安装Nginx，申请了域名证书
 
-### 访问
-https://域名/files
-
 ### Nginx配置
 ```bash
 location ^~ /files/ {
@@ -31,9 +28,3 @@ location ^~ /files/ {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 ```
-
-### 登录
-初始密码为 admin 登录上去记得修改密码
-
-### 注意
-确保8088端口没有被占用
