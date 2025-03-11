@@ -1,8 +1,14 @@
 #!/bin/bash
 
 clear
-
 USERNAME=$1
+regex="^[a-zA-Z]+$"
+
+if [[ -z "$USERNAME" ]]; then
+    echo "用户名不能为空！"
+elif [[ ! "$USERNAME" =~ $regex ]]; then
+    echo "用户名只能包含英文字符，不能包含空格或符号！"
+fi
 
 TARGET_DIR="/filebrowser"
 
