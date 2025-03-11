@@ -4,7 +4,7 @@ clear
 USERNAME=$1
 regex="^[a-zA-Z0-9]+$"
 
-if [[ "$username" == "username" ]]; then
+if [[ "$USERNAME" == "username" ]]; then
     echo "不能使用 'username' 作为用户名！"
     exit 0
 elif [[ -z "$USERNAME" ]]; then
