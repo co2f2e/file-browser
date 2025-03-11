@@ -1,9 +1,13 @@
 #!/bin/bash
-
 clear
+TARGET_DIR="/filebrowser"
+CONFIG_DB="/etc/filebrowser.db"
+LOG_FILE="/var/log/filebrowser.log"
+RC_LOCAL="/etc/rc.local"
+SHARE_FILES="/filebrowsersharefiles"
 USERNAME=$1
-regex="^[a-zA-Z0-9]+$"
 
+regex="^[a-zA-Z0-9]+$"
 if [[ "$USERNAME" == "username" ]]; then
     echo "不能使用 username 作为用户名！"
     exit 0
@@ -14,8 +18,6 @@ elif [[ ! "$USERNAME" =~ $regex ]]; then
     echo "用户名只能是纯英文或英文和数字组成，不能包含空格或符号！"
     exit 0
 fi
-
-TARGET_DIR="/filebrowser"
 
 if [ -d "$TARGET_DIR" ]; then
     echo "检测到 $TARGET_DIR 存在，正在删除..."
@@ -49,23 +51,23 @@ echo "FileBrowser ($LATEST_RELEASE) 已下载并解压到 /$TARGET_DIR，接下�
 
 chmod +x "$TARGET_DIR"/filebrowser
 
-"$TARGET_DIR"/filebrowser -d /etc/filebrowser.db config init
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB config init
 
-"$TARGET_DIR"/filebrowser -d /etc/filebrowser.db config set --address 127.0.0.1
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --address 127.0.0.1
 
-"$TARGET_DIR"/filebrowser -d /etc/filebrowser.db config set --port 8088
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --port 8088
 
-"$TARGET_DIR"/filebrowser -d /etc/filebrowser.db config set --locale zh-cn
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --locale zh-cn
 
-"$TARGET_DIR"/filebrowser -d /etc/filebrowser.db config set --log /var/log/filebrowser.log
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --log $LOG_FILE
 
-"$TARGET_DIR"/filebrowser -d /etc/filebrowser.db config set --baseurl /files
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --baseurl /files
 
-"$TARGET_DIR"/filebrowser -d /etc/filebrowser.db config set --root /filebrowsersharefiles
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --root $SHARE_FILES
 
-"$TARGET_DIR"/filebrowser -d /etc/filebrowser.db users add $USERNAME admin --perm.admin
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB users add $USERNAME admin --perm.admin
 
-nohup "$TARGET_DIR"/filebrowser -d /etc/filebrowser.db >/dev/null 2>&1 &
+nohup "$TARGET_DIR"/filebrowser -d $CONFIG_DB >/dev/null 2>&1 &
 
 PID=$!
 
@@ -75,6 +77,13 @@ if ps -p $PID > /dev/null; then
     sed -i '/exit 0/i\nohup filebrowser -d \/etc\/filebrowser.db >\/dev\/null 2>&1 &' /etc/rc.local
     echo "filebrowser 服务已成功启动并添加到开机自启！"
 else
-    echo "filebrowser 启动失败，请检查配置。"
+    rm -rf "$TARGET_DIR"
+    rm -f "$CONFIG_DB"
+    rm -f "$LOG_FILE"
+    rm -rf "$SHARE_FILES"
+    if [ -f "$RC_LOCAL" ]; then
+        sed -i '/filebrowser/d' "$RC_LOCAL"
+    fi
+    echo "filebrowser 启动失败，已删除相关文件"
 fi
 
