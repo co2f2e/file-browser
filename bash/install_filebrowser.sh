@@ -6,6 +6,7 @@ LOG_FILE="/var/log/filebrowser.log"
 RC_LOCAL="/etc/rc.local"
 SHARE_FILES="/filebrowsersharefiles"
 USERNAME=$1
+PORT=$2
 
 regex="^[a-zA-Z0-9]+$"
 if [[ "$USERNAME" == "username" ]]; then
@@ -16,6 +17,11 @@ elif [[ -z "$USERNAME" ]]; then
     exit 0
 elif [[ ! "$USERNAME" =~ $regex ]]; then
     echo "用户名只能是纯英文或英文和数字组成，不能包含空格或符号！"
+    exit 0
+fi
+
+if ss -tuln | grep -q ":$PORT"; then
+    echo "端口 $PORT 已被占用！"
     exit 0
 fi
 
@@ -43,7 +49,7 @@ chmod +x "$TARGET_DIR"/filebrowser
 
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB config init >/dev/null 2>&1
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --address 127.0.0.1 >/dev/null 2>&1
-"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --port 8088 >/dev/null 2>&1
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --port $PORT >/dev/null 2>&1
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --locale zh-cn >/dev/null 2>&1
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --log $LOG_FILE >/dev/null 2>&1
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --baseurl /files >/dev/null 2>&1
