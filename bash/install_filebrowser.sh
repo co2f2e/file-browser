@@ -75,7 +75,13 @@ sleep 2
 
 if ps -p $PID > /dev/null; then
     sed -i '/exit 0/i\nohup filebrowser -d \/etc\/filebrowser.db >\/dev\/null 2>&1 &' /etc/rc.local
+    echo
     echo "filebrowser 服务已成功启动并添加到开机自启！"
+    echo
+    echo 访问：https://域名/files
+    echo 用户名：$USERNAME
+    echo 密码：admin
+    echo
 else
     rm -rf "$TARGET_DIR"
     rm -f "$CONFIG_DB"
@@ -84,6 +90,8 @@ else
     if [ -f "$RC_LOCAL" ]; then
         sed -i '/filebrowser/d' "$RC_LOCAL"
     fi
+    echo
     echo "filebrowser 启动失败，已删除相关文件"
+    echo
 fi
 
