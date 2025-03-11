@@ -20,5 +20,5 @@ if [[ "$confirmation" == "y" || "$confirmation" == "Y" ]]; then
     fi
     echo "FileBrowser 已成功卸载！"
 else
-    echo "卸载操作已取消"
+    echo "卸载操作已取消！"
 fi
