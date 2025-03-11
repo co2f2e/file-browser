@@ -67,4 +67,14 @@ chmod +x "$TARGET_DIR"/filebrowser
 
 nohup "$TARGET_DIR"/filebrowser -d /etc/filebrowser.db >/dev/null 2>&1 &
 
-sed -i '/exit 0/i\nohup filebrowser -d \/etc\/filebrowser.db >\/dev\/null 2>&1 &' /etc/rc.local
+PID=$!
+
+sleep 2
+
+if ps -p $PID > /dev/null; then
+    sed -i '/exit 0/i\nohup filebrowser -d \/etc\/filebrowser.db >\/dev\/null 2>&1 &' /etc/rc.local
+    echo "filebrowser 服务已成功启动并添加到开机自启！"
+else
+    echo "filebrowser 启动失败，请检查配置。"
+fi
+
