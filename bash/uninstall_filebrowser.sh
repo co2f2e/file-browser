@@ -6,7 +6,8 @@ LOG_FILE="/var/log/filebrowser.log"
 RC_LOCAL="/etc/rc.local"
 SHARE_FILES="/filebrowsersharefiles"
 
-echo "卸载会删除$SHARE_FILES保存的文件，你确定要卸载吗?"
+echo "卸载会删除$SHARE_FILES下上传的文件，你确定要卸载吗?"
+echo
 read -p "请输入 (y/n): " confirmation
 if [[ "$confirmation" == "y" || "$confirmation" == "Y" ]]; then
     echo "正在停止 FileBrowser 进程..."
