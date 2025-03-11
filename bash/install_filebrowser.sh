@@ -38,7 +38,7 @@ if [ ! -f "$TARGET_DIR/filebrowser" ]; then
     echo "解压失败，未找到 filebrowser 可执行文件！"
     exit 1
 fi
-echo "FileBrowser ($LATEST_RELEASE) 已下载并解压到 /$TARGET_DIR，接下来进行配置修改"
+echo "FileBrowser ($LATEST_RELEASE) 已下载并解压到 $TARGET_DIR，接下来进行配置修改"
 chmod +x "$TARGET_DIR"/filebrowser
 
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB config init >/dev/null 2>&1
@@ -61,7 +61,6 @@ if ps -p $PID > /dev/null; then
     echo 访问：https://域名/files
     echo 用户名：$USERNAME
     echo 密码：admin
-    echo
 else
     rm -rf "$TARGET_DIR"
     rm -f "$CONFIG_DB"
@@ -72,5 +71,4 @@ else
     fi
     echo
     echo "filebrowser 启动失败，已删除相关文件"
-    echo
 fi
