@@ -2,13 +2,16 @@
 
 clear
 USERNAME=$1
-regex="^[a-zA-Z]+$"
+regex="^[a-zA-Z0-9]+$"
 
-if [[ -z "$USERNAME" ]]; then
+if [[ "$username" == "username" ]]; then
+    echo "不能使用 'username' 作为用户名！"
+    exit 0
+elif [[ -z "$USERNAME" ]]; then
     echo "用户名不能为空！"
     exit 0
 elif [[ ! "$USERNAME" =~ $regex ]]; then
-    echo "用户名只能包含英文字符，不能包含空格或符号！"
+    echo "用户名只能是纯英文或英文和数字组成，不能包含空格或符号！"
     exit 0
 fi
 
