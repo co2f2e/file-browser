@@ -2,6 +2,8 @@
 
 clear
 
+USERNAME=$1
+
 TARGET_DIR="/filebrowser"
 
 if [ -d "$TARGET_DIR" ]; then
@@ -50,7 +52,7 @@ chmod +x "$TARGET_DIR"/filebrowser
 
 "$TARGET_DIR"/filebrowser -d /etc/filebrowser.db config set --root /filebrowsersharefiles
 
-"$TARGET_DIR"/filebrowser -d /etc/filebrowser.db users add sysadmin sysadmin --perm.admin
+"$TARGET_DIR"/filebrowser -d /etc/filebrowser.db users add $USERNAME admin --perm.admin
 
 nohup "$TARGET_DIR"/filebrowser -d /etc/filebrowser.db >/dev/null 2>&1 &
 
