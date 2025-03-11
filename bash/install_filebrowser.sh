@@ -20,6 +20,21 @@ elif [[ ! "$USERNAME" =~ $regex ]]; then
     exit 0
 fi
 
+if [[ -z "$PORT" ]]; then
+    echo "端口不能为空！"
+    exit 0
+fi
+
+if [[ ! "$PORT" =~ ^[0-9]+$ ]]; then
+    echo "端口只能是纯数字！"
+    exit 0
+fi
+
+if [ "$PORT" -lt 1 ] || [ "$PORT" -gt 65535 ]; then
+    echo "端口号必须在 1 到 65535 之间！"
+    exit 0
+fi
+
 if ss -tuln | grep -q ":$PORT"; then
     echo "端口 $PORT 已被占用！"
     exit 0
