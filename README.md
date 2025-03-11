@@ -5,6 +5,7 @@ FileBrowser是一个开源的文件管理系统，主要用于提供一个简单
 
 
 ### 安装
+最后一个username参数修改为你想注册的用户名，只能是纯英文或英文加数字
 ```bash
 bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/FileBrowser/main/bash/install_filebrowser.sh) username
 ```
@@ -32,7 +33,7 @@ location ^~ /files/ {
 ```
 
 ### 登录
-安装的时候只允许用户名是纯英文或英文加数字，初始密码为：admin
+初始密码为 admin 登录上去记得修改密码
 
 ### 注意
 确保8088端口没有被占用
