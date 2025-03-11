@@ -5,9 +5,10 @@ FileBrowser是一个开源的文件管理系统，主要用于提供一个简单
 
 
 ### 安装
-最后一个username参数修改为你想注册的用户名，只能是纯英文或英文加数字
+第一个参数username设置为你想注册的用户名，只能是纯英文或英文加数字
+第二个参数port设置为一个端口号，记得Nginx中配置为相应的端口号
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/FileBrowser/main/bash/install_filebrowser.sh) username
+bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/FileBrowser/main/bash/install_filebrowser.sh) username 8088
 ```
 
 ### 卸载
