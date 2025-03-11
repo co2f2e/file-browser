@@ -5,7 +5,7 @@ USERNAME=$1
 regex="^[a-zA-Z0-9]+$"
 
 if [[ "$USERNAME" == "username" ]]; then
-    echo "不能使用 'username' 作为用户名！"
+    echo "不能使用 username 作为用户名！"
     exit 0
 elif [[ -z "$USERNAME" ]]; then
     echo "用户名不能为空！"
