@@ -27,5 +27,6 @@ location ^~ /files/ {
         proxy_set_header Host $proxy_host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        client_max_body_size 200M; #设置上传文件最大限制
     }
 ```
