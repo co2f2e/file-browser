@@ -24,9 +24,13 @@ Debian12
 ```bash
 location ^~ /files/ {
         proxy_pass  http://127.0.0.1:8088/;
-        proxy_set_header Host $proxy_host;
+        proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        client_max_body_size 200M; #设置上传文件最大限制
+        client_max_body_size 200M; #设置单个上传文件最大限制
+        proxy_buffers 4 8k; #4个8KB的缓冲区
+	      proxy_busy_buffers_size 8k; #允许最多使用8KB的内存
+	      sendfile on; #启用 sendfile 提高文件传输性能
+	      tcp_nopush on; #优化大文件传输
     }
 ```
