@@ -27,7 +27,7 @@ location ^~ /files/ {
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        client_max_body_size 200M; #设置单个上传文件最大限制
+        client_max_body_size 2G; #设置单个上传文件最大限制
         proxy_buffers 4 8k; #4个8KB的缓冲区
         proxy_busy_buffers_size 8k; #允许最多使用8KB的内存
         sendfile on; #启用 sendfile 提高文件传输性能
