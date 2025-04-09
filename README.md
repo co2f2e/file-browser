@@ -17,7 +17,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/FileBrowser/main/bash/i
 bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/FileBrowser/main/bash/uninstall_filebrowser.sh)
 ```
 
-### Nginx配置
+### NGINX配置
 ```bash
 location ^~ /files/ {
         proxy_pass  http://127.0.0.1:8088/;
