@@ -5,6 +5,7 @@ CONFIG_DB="/etc/filebrowser.db"
 LOG_FILE="/var/log/filebrowser.log"
 RC_LOCAL="/etc/rc.local"
 SHARE_FILES="/filebrowsersharefiles"
+SERVICE_FILE="/etc/systemd/system/filebrowser.service"
 USERNAME=$1
 PORT=$2
 
