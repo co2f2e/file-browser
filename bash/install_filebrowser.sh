@@ -62,6 +62,11 @@ fi
 echo "FileBrowser ($LATEST_RELEASE) 已下载并解压到 $TARGET_DIR，接下来进行配置修改"
 chmod +x "$TARGET_DIR"/filebrowser
 
+if [ -f "$CONFIG_DB" ]; then
+    echo "检测到旧的数据库，删除旧数据库..."
+    rm -f "$CONFIG_DB"
+fi
+
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB config init >/dev/null 2>&1
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --address 127.0.0.1 >/dev/null 2>&1
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --port $PORT >/dev/null 2>&1
@@ -71,25 +76,36 @@ chmod +x "$TARGET_DIR"/filebrowser
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --root $SHARE_FILES >/dev/null 2>&1
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB users add $USERNAME admin --perm.admin >/dev/null 2>&1
 
-nohup "$TARGET_DIR"/filebrowser -d $CONFIG_DB >/dev/null 2>&1 &
-PID=$!
-sleep 2
-if ps -p $PID > /dev/null; then
-    sed -i '/exit 0/i\nohup filebrowser -d \/etc\/filebrowser.db >\/dev\/null 2>&1 &' /etc/rc.local
-    echo
-    echo "filebrowser 服务已成功启动并添加到开机自启！"
-    echo
-    echo 访问：https://域名/files
-    echo 用户名：$USERNAME
-    echo 密码：admin
+echo "正在创建 systemd 服务文件..."
+
+cat > "$SERVICE_FILE" <<EOF
+[Unit]
+Description=FileBrowser Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=$TARGET_DIR/filebrowser -d $CONFIG_DB
+Restart=on-failure
+RestartSec=3
+StandardOutput=file:$LOG_FILE
+StandardError=file:$LOG_FILE
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+
+systemctl enable filebrowser
+
+systemctl start filebrowser
+
+if systemctl is-active --quiet filebrowser; then
+    echo "FileBrowser 安装并已启动成功！"
+    echo "访问地址: http://<服务器IP>:$PORT"
+    echo "用户名: $USERNAME"
+    echo "密码: $USERNAME"
 else
-    rm -rf "$TARGET_DIR"
-    rm -f "$CONFIG_DB"
-    rm -f "$LOG_FILE"
-    rm -rf "$SHARE_FILES"
-    if [ -f "$RC_LOCAL" ]; then
-        sed -i '/filebrowser/d' "$RC_LOCAL"
-    fi
-    echo
-    echo "filebrowser 启动失败，已删除相关文件"
+    echo "FileBrowser 启动失败，请检查日志: $LOG_FILE"
 fi
