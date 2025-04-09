@@ -35,13 +35,25 @@ location ^~ /files/ {
     }
 ```
 ### 服务管理命令
-| 操作 | 命令 |
-|--------|--------|
-| 启动服务 | `sudo systemctl start filebrowser` |
-| 停止服务 | `sudo systemctl stop filebrowser` |
-| 重启服务 | `sudo systemctl restart filebrowser` |
-| 查看状态 | `sudo systemctl status filebrowser` |
-| 查看日志 | `sudo journalctl -u filebrowser -f` |
-| 开机自启动 | sudo systemctl enable filebrowser |
-| 关闭开机启动 | `sudo systemctl disable filebrowser` |
+| 操作         | 命令                                                        |
+|--------------|-------------------------------------------------------------|
+| 启动服务     | <button onclick="copyText('sudo systemctl start filebrowser')">复制</button> |
+| 停止服务     | <button onclick="copyText('sudo systemctl stop filebrowser')">复制</button> |
+| 重启服务     | <button onclick="copyText('sudo systemctl restart filebrowser')">复制</button> |
+| 查看状态     | <button onclick="copyText('sudo systemctl status filebrowser')">复制</button> |
+| 查看日志     | <button onclick="copyText('sudo journalctl -u filebrowser -f')">复制</button> |
+| 开机自启动   | <button onclick="copyText('sudo systemctl enable filebrowser')">复制</button> |
+| 关闭开机启动 | <button onclick="copyText('sudo systemctl disable filebrowser')">复制</button> |
+
+<script>
+function copyText(text) {
+    const el = document.createElement('textarea');
+    el.value = text;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    alert('已复制命令: ' + text);
+}
+</script>
 
