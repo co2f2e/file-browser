@@ -97,12 +97,11 @@ WantedBy=multi-user.target
 EOF
 
 systemctl daemon-reload
-
 systemctl enable filebrowser
-
 systemctl start filebrowser
 
 if systemctl is-active --quiet filebrowser; then
+    echo
     echo "FileBrowser 安装并已启动成功！"
     echo "访问地址: http://<服务器IP>:$PORT"
     echo "用户名: $USERNAME"
