@@ -1,5 +1,5 @@
 <h1 align="center">
-  FileBrowser
+  FileBrowser一键安装脚本
 </h1>
 FileBrowser是一个开源的文件管理系统，主要用于提供一个简单、直观的 Web 界面，方便用户管理文件。它允许用户通过 Web 浏览器访问、上传、下载、编辑文件，还提供了文件共享、权限管理等功能。
 
