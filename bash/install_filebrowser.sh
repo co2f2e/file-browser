@@ -103,6 +103,7 @@ systemctl start filebrowser
 if systemctl is-active --quiet filebrowser; then
     echo
     echo "FileBrowser 安装并已启动成功！"
+    echo
     echo "访问地址: https://<服务器IP>:$PORT"
     echo "用户名: $USERNAME"
     echo "密码: $USERNAME"
