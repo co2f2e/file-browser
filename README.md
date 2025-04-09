@@ -34,3 +34,14 @@ location ^~ /files/ {
         tcp_nopush on; #优化大文件传输
     }
 ```
+### 服务管理命令
+| 操作 | 命令 |
+|--------|--------|
+| 启动服务 | `sudo systemctl start filebrowser` |
+| 停止服务 | `sudo systemctl stop filebrowser` |
+| 重启服务 | `sudo systemctl restart filebrowser` |
+| 查看状态 | `sudo systemctl status filebrowser` |
+| 查看日志 | `sudo journalctl -u filebrowser -f` |
+| 开机自启动 | sudo systemctl enable filebrowser |
+| 关闭开机启动 | `sudo systemctl disable filebrowser` |
+
