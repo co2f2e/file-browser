@@ -35,13 +35,13 @@ location ^~ /files/ {
     }
 ```
 ### 服务管理命令
-| 操作         | 命令                                                         |
-|--------------|--------------------------------------------------------------|
-| 启动服务     | [复制命令: `sudo systemctl start filebrowser`](#)             |
-| 停止服务     | [复制命令: `sudo systemctl stop filebrowser`](#)              |
-| 重启服务     | [复制命令: `sudo systemctl restart filebrowser`](#)           |
-| 查看状态     | [复制命令: `sudo systemctl status filebrowser`](#)            |
-| 查看日志     | [复制命令: `sudo journalctl -u filebrowser -f`](#)            |
-| 开机自启动   | [复制命令: `sudo systemctl enable filebrowser`](#)            |
-| 关闭开机启动 | [复制命令: `sudo systemctl disable filebrowser`](#)           |
+| 操作         | 命令                                                        |
+|--------------|-------------------------------------------------------------|
+| 启动服务     | ```sudo systemctl start filebrowser```                      |
+| 停止服务     | ```sudo systemctl stop filebrowser```                       |
+| 重启服务     | ```sudo systemctl restart filebrowser```                    |
+| 查看状态     | ```sudo systemctl status filebrowser```                     |
+| 查看日志     | ```sudo journalctl -u filebrowser -f```                     |
+| 开机自启动   | ```sudo systemctl enable filebrowser```                     |
+| 关闭开机启动 | ```sudo systemctl disable filebrowser```                    |
 
