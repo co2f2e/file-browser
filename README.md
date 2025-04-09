@@ -3,6 +3,7 @@
 </h1>
 FileBrowser是一个开源的文件管理系统，主要用于提供一个简单、直观的 Web 界面，方便用户管理文件。它允许用户通过 Web 浏览器访问、上传、下载、编辑文件，还提供了文件共享、权限管理等功能。
 
+<hr>
 
 ### 安装
 * 第一个参数username设置为你想注册的用户名，只能是纯英文或英文加数字
@@ -15,10 +16,6 @@ bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/FileBrowser/main/bash/i
 ```bash
 bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/FileBrowser/main/bash/uninstall_filebrowser.sh)
 ```
-
-### 环境
-Debian12
-已安装Nginx，申请了域名证书
 
 ### Nginx配置
 ```bash
@@ -45,3 +42,7 @@ location ^~ /files/ {
 | 开机自启动   | ```sudo systemctl enable filebrowser```                     |
 | 关闭开机启动 | ```sudo systemctl disable filebrowser```                    |
 
+### 环境
+* Debian12
+* NGINX
+* SSL
