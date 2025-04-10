@@ -46,7 +46,7 @@ if [[ "$confirmation" == "y" || "$confirmation" == "Y" ]]; then
     fi
 
     if [ -f "$SERVICE_FILE" ]; then
-        green "🗑删除 systemd 服务文件..."
+        green "删除 systemd 服务文件..."
         rm -f "$SERVICE_FILE"
         systemctl daemon-reload
     fi
