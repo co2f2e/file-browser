@@ -1,7 +1,7 @@
 <h1 align="center">
-  FileBrowser一键安装脚本
+  file-browser一键安装脚本
 </h1>
-FileBrowser是一个开源的文件管理系统，主要用于提供一个简单、直观的 Web 界面，方便用户管理文件。它允许用户通过 Web 浏览器访问、上传、下载、编辑文件，还提供了文件共享、权限管理等功能。
+file-browser是一个开源的文件管理系统，主要用于提供一个简单、直观的 Web 界面，方便用户管理文件。它允许用户通过 Web 浏览器访问、上传、下载、编辑文件，还提供了文件共享、权限管理等功能。
 
 <hr>
 
@@ -9,12 +9,12 @@ FileBrowser是一个开源的文件管理系统，主要用于提供一个简单
 * 第一个参数username设置为你想注册的用户名，只能是纯英文或英文加数字
 * 第二个参数port设置为一个端口号，记得NGINX中配置为相应的端口号
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/FileBrowser/main/bash/install_filebrowser.sh) username 8088
+bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/file-browser/main/bash/install_filebrowser.sh) username 8088
 ```
 
 ### 卸载
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/FileBrowser/main/bash/uninstall_filebrowser.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/file-browser/main/bash/uninstall_filebrowser.sh)
 ```
 
 ### NGINX配置
