@@ -30,42 +30,42 @@ CONFIG_DB="/etc/filebrowser.db"
 LOG_FILE="/var/log/filebrowser.log"
 SHARE_FILES="/filebrowsersharefiles"
 
-read -p "$(yellow "卸载会删除 "$SHARE_FILES" 下已上传的文件，你确定要卸载吗，请输入(y/n)"): " confirmation
-if [[ "$confirmation" == "y" || "$confirmation" == "Y" ]]; then
+green "开始卸载 FileBrowser..."
 
-    green "开始卸载 FileBrowser..."
-
-    if systemctl is-active --quiet filebrowser; then
-        green "停止 filebrowser 服务..."
-        systemctl stop filebrowser
-    fi
-
-    if systemctl is-enabled --quiet filebrowser; then
-        green "禁用 filebrowser 服务..."
-        systemctl disable filebrowser
-    fi
-
-    if [ -f "$SERVICE_FILE" ]; then
-        green "删除 systemd 服务文件..."
-        rm -f "$SERVICE_FILE"
-        systemctl daemon-reload
-    fi
-
-    if [ -d "$TARGET_DIR" ]; then
-        green "删除安装目录 $TARGET_DIR ..."
-        rm -rf "$TARGET_DIR"
-    fi
-
-    if [ -f "$CONFIG_DB" ]; then
-        green "删除配置数据库 $CONFIG_DB ..."
-        rm -f "$CONFIG_DB"
-    fi
-
-    if [ -f "$LOG_FILE" ]; then
-        green "删除日志文件 $LOG_FILE ..."
-        rm -f "$LOG_FILE"
-    fi
-    green "✅ 卸载完成！"
-else
-    red "❌ 已放弃卸载！"
+if systemctl is-active --quiet filebrowser; then
+	green "停止 filebrowser 服务..."
+	systemctl stop filebrowser
 fi
+
+if systemctl is-enabled --quiet filebrowser; then
+	green "禁用 filebrowser 服务..."
+	systemctl disable filebrowser
+fi
+
+if [ -f "$SERVICE_FILE" ]; then
+	green "删除 systemd 服务文件..."
+	rm -f "$SERVICE_FILE"
+	systemctl daemon-reload
+fi
+
+if [ -d "$TARGET_DIR" ]; then
+	green "删除安装目录 $TARGET_DIR ..."
+	rm -rf "$TARGET_DIR"
+fi
+
+if [ -f "$CONFIG_DB" ]; then
+	green "删除配置数据库 $CONFIG_DB ..."
+	rm -f "$CONFIG_DB"
+fi
+
+if [ -f "$LOG_FILE" ]; then
+	green "删除日志文件 $LOG_FILE ..."
+	rm -f "$LOG_FILE"
+fi
+
+read -p "$(yellow "是否要删除 "$SHARE_FILES" 下已保存的文件，请输入(y/n)"): " confirmation
+if [[ "$confirmation" == "y" || "$confirmation" == "Y" ]]; then
+	rm -rf "$SHARE_FILES"
+fi
+
+green "✅ 卸载完成！"
