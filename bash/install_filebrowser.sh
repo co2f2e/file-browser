@@ -96,7 +96,7 @@ fi
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --port $PORT >/dev/null 2>&1
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --locale zh-cn >/dev/null 2>&1
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --log $LOG_FILE >/dev/null 2>&1
-"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --baseurl /files >/dev/null 2>&1
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --baseurl / >/dev/null 2>&1
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --root $SHARE_FILES >/dev/null 2>&1
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB users add $USERNAME $USERNAME --perm.admin >/dev/null 2>&1
 
