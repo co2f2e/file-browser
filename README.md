@@ -6,10 +6,10 @@ file-browser是一个开源的文件管理系统，主要用于提供一个简�
 <hr>
 
 ### 安装
-* 第一个参数username设置为你想注册的用户名，只能是纯英文或英文加数字
-* 第二个参数port设置为一个端口号，记得NGINX中配置为相应的端口号
+* 第1个参数port设置为一个端口号，记得NGINX中配置为相应的端口号
+* 第2个参数username设置为你想注册的用户名，只能是纯英文或英文加数字
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/file-browser/main/bash/install_filebrowser.sh) username 8088
+bash <(curl -Ls https://raw.githubusercontent.com/co2f2e/file-browser/main/bash/install_filebrowser.sh) 8088 username
 ```
 
 ### 卸载
