@@ -128,9 +128,11 @@ if systemctl is-active --quiet filebrowser; then
     echo
     green "FileBrowser 安装并已启动成功！"
     echo
+    yellow "登录后请先修改密码，否则只能卸载了重新安装"
+    echo
     green "访问地址: https://<服务器IP>:$PORT"
     green "用户名: $USERNAME"
-    green "密码: $USERNAME"
+    green "密码: $DEFAULT_PASSWORD"
 else
     red "FileBrowser 启动失败，请检查日志: $LOG_FILE"
 fi
