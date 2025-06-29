@@ -31,6 +31,7 @@ SHARE_FILES="/filebrowsersharefiles"
 SERVICE_FILE="/etc/systemd/system/filebrowser.service"
 PORT=$1
 USERNAME=$2
+DEFAULT_PASSWORD=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 16)
 
 regex="^[a-zA-Z0-9]+$"
 if [[ "$USERNAME" == "username" ]]; then
@@ -98,7 +99,7 @@ fi
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --log $LOG_FILE >/dev/null 2>&1
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --baseurl / >/dev/null 2>&1
 "$TARGET_DIR"/filebrowser -d $CONFIG_DB config set --root $SHARE_FILES >/dev/null 2>&1
-"$TARGET_DIR"/filebrowser -d $CONFIG_DB users add $USERNAME $USERNAME --perm.admin 
+"$TARGET_DIR"/filebrowser -d $CONFIG_DB users add $USERNAME $DEFAULT_PASSWORD --perm.admin 
 
 green "正在创建 systemd 服务文件..."
 
